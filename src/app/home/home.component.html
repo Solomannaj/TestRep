@@ -1,0 +1,55 @@
+
+<div class="row">
+
+  <div class="col-md-6" style="padding-left:50px;">
+    <br />
+    <p style="color:rgba(40, 167, 69, 1); font-weight:bold">Employees</p>
+    <br />
+    <div style="height:320px;overflow-y:scroll;overflow-x:hidden">
+
+      <div *ngFor="let employee of employees">
+        <div class="row" style="padding-top:10px;">
+          <div class="col-sm-6">
+            <div style="font-size:14px;font-weight:bold;">
+              {{employee.Name}}
+              <span style="font-size:12px;font-weight:normal;padding-left:5px;">
+                {{employee.JobDetails.Name}}
+              </span>
+              <span style="font-size:12px;font-weight:normal;padding-left:5px;">
+                {{employee.Address}}
+              </span>
+              <span style="font-size:12px;font-weight:normal;padding-left:5px;">
+                {{employee.Age}}
+              </span>
+
+            </div>
+          </div>
+
+          <div class="col-sm-1">
+            <button class="btn btn-outline-info" (click)="editEmployee(employee)">Edit</button>
+          </div>
+          <div class="col-sm-1">
+            <button class="btn btn-outline-info" (click)="deleteEmployee(employee.EmpID)">Delete</button>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <br />
+    <br />
+    <button (click)="addEmployee()" class="btn btn-primary" style="float:right">Add Employee</button>
+
+  </div>
+
+  <div class="col-md-6" style="padding-left:50px;">
+    <app-employee [employee]="selectedEmployee" [tittle]="tittle" (getEmployees)="getEmployees()"></app-employee>
+  </div>
+
+</div>
+
+
+

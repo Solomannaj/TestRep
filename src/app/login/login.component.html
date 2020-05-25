@@ -1,0 +1,22 @@
+
+<div class="contaner" style="width:300px;padding-left:50px; margin-left:400px;margin-top:50px;">
+  <p style="color:rgba(40, 167, 69, 1); font-weight:bold">Employee Management</p>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="UserName">Email</label>
+      <input type="text" formControlName="UserName" class="form-control" [ngClass]="{ 'is-invalid': fm.UserName.errors && submitted }" />
+      <div *ngIf="fm.UserName.errors" class="invalid-feedback">
+        <div *ngIf="fm.UserName.errors.required">Email is required</div>
+        <div *ngIf="fm.UserName.errors.minlength">Email must be at least 6 characters</div>       
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Password">Password</label>
+      <input type="password" formControlName="Password" class="form-control" />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+</div>
+

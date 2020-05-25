@@ -1,0 +1,40 @@
+
+<div class="contaner" style="width:300px;padding-left:50px;">
+  <br />
+  <p style="color:rgba(40, 167, 69, 1); font-weight:bold">{{tittle}}</p>
+  <br />
+  <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+    <div class="form-group">
+      <label for="Name">Employee Name</label>
+      <input type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': fm.Name.errors }"   [(ngModel)] ="employee.Name" />
+      <div *ngIf="fm.Name.errors" class="invalid-feedback">
+        <div *ngIf="fm.Name.errors.required">Email is required</div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="Address">Address</label>
+      <input type="text" formControlName="Address" class="form-control"  [(ngModel)] ="employee.Address" />
+    </div>
+    <div class="form-group">
+      <label for="Age">Age</label>
+      <input type="text" formControlName="Age" class="form-control" [(ngModel)] ="employee.Age" />
+    </div>
+    <div class="form-group">      
+      <div>
+        <label for="JobName">Job: </label>
+        <select formControlName="JobID" (change)="SelectJob($event.target.value)" [(ngModel)] ="employee.JobID">
+          <option value="0">--All--</option>
+          <option *ngFor="let job of jobs" value={{job.JobID}}>
+            {{job.Name}}
+          </option>
+        </select>
+      </div>
+    </div>
+ 
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </form>  
+
+</div>
