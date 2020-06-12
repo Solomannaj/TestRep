@@ -4,6 +4,7 @@ import { Jobdetails } from '../models/jobdetails';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataapiService } from '../dataapi.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee',
@@ -33,6 +34,7 @@ export class EmployeeComponent implements OnInit {
 
     let job: Jobdetails= {Name:"",JobID:0 };
     self.employee = new Employee();
+
     self.employee.Name = "";
     self.employee.Address = "";
     self.employee.Age = 0;
@@ -40,7 +42,7 @@ export class EmployeeComponent implements OnInit {
 
     self.employeeForm = self.formBuilder.group({
       Name: ['', [Validators.required, Validators.minLength(6)]],
-      JobID: ['', Validators.required],
+      JobID: ['', [Validators.required,Validators.pattern('@')]],
       Address: ['', Validators.required],
       Age: ['', Validators.required]
       

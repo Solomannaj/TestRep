@@ -1,6 +1,6 @@
 import { Jobdetails } from "./jobdetails";
 
-export class Employee {
+export class Employee{
 
   public EmpID: number;
   public Name: string;

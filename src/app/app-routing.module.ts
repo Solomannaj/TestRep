@@ -5,12 +5,14 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { JobComponent } from './job/job.component';
+import { ErrorComponent } from './error/error.component';
 
 
 const routes: Routes = [
 
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent } 
+  { path: 'login', component: LoginComponent } ,
+  { path: 'error', component: ErrorComponent, data: {errorDet: ""} } 
 ];
 
 const childRoutes: Routes = [

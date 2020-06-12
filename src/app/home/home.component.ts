@@ -3,6 +3,8 @@ import { DataapiService } from '../dataapi.service';
 import { Router } from '@angular/router';
 import { Employee } from '../models/employee';
 import { Jobdetails } from '../models/jobdetails';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +13,7 @@ import { Jobdetails } from '../models/jobdetails';
 })
 export class HomeComponent implements OnInit {
   employees: Employee;
+  obsEmp: Observable<Employee>
   selectedEmployee: Employee;
   tittle: string = "Add Employee";
 
@@ -24,10 +27,7 @@ export class HomeComponent implements OnInit {
 
   getEmployees() {
 
-    this.apiService.getEmployees().subscribe((data) => {
-
-      this.employees = data;
-    });
+    this.obsEmp = this.apiService.getEmployees();
   }
 
   editEmployee(emplyee:Employee) {
